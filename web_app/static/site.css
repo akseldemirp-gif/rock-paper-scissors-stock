@@ -1,0 +1,60 @@
+:root {
+  color-scheme: light;
+  --ink: #182932;
+  --muted: #50626a;
+  --pine: #154b44;
+  --line: #dce5e1;
+  --paper: #f3f7f5;
+}
+body { background: var(--paper); color: var(--ink); min-height: 100vh; }
+.shell { max-width: 1000px; }
+.site-nav { background: #173b37; padding-block: .85rem; }
+.nav-inner { gap: .4rem 1rem; }
+.navbar-brand { font-size: 1.13rem; font-weight: 700; }
+.brand-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  display: grid;
+  place-items: center;
+  border-radius: .45rem;
+  background: #bfe8d8;
+  color: #123530;
+}
+.site-nav .nav-link { color: #e2efeb; border-radius: .4rem; padding: .4rem .65rem; }
+.site-nav .nav-link:hover, .site-nav .nav-link.active { background: #34615a; color: white; }
+.main-content { padding-top: clamp(2rem, 6vw, 5rem); padding-bottom: 3rem; }
+.home-intro { max-width: 44rem; margin-bottom: 2rem; }
+.home-intro h1 { font-size: clamp(2.5rem, 7vw, 4.9rem); line-height: 1.04; }
+h1, h2 { font-weight: 720; letter-spacing: -.035em; }
+.lead, .source, .feature p { color: var(--muted); }
+.panel, .feature { background: #fff; border: 1px solid var(--line); border-radius: 1rem; }
+.panel, .feature .card-body { padding: clamp(1.2rem, 4vw, 2rem); }
+.narrow { max-width: 36rem; }
+.lookup-form { max-width: 25rem; }
+.form-label { font-weight: 650; }
+.form-control, .form-select { border-color: #a6b8b2; }
+.ticker-input { text-transform: uppercase; }
+.btn { font-weight: 650; }
+.btn-primary {
+  --bs-btn-bg: var(--pine);
+  --bs-btn-border-color: var(--pine);
+  --bs-btn-hover-bg: #103a35;
+  --bs-btn-hover-border-color: #103a35;
+  --bs-btn-active-bg: #103a35;
+  --bs-btn-active-border-color: #103a35;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--pine);
+  --bs-btn-border-color: var(--pine);
+  --bs-btn-hover-bg: var(--pine);
+  --bs-btn-hover-border-color: var(--pine);
+  --bs-btn-active-bg: #103a35;
+  --bs-btn-active-border-color: #103a35;
+}
+.moves { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; margin-block: 1.2rem; }
+.moves div { background: var(--paper); border-radius: .55rem; padding: .75rem; }
+.moves dt { color: var(--muted); font-size: .85rem; }
+.moves dd { margin: .25rem 0 0; font-size: 1.15rem; font-weight: 650; }
+.dashboard-heading { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; justify-content: space-between; margin-bottom: 1.25rem; }
+.chart-box { height: clamp(220px, 38vw, 340px); }
+.table { font-variant-numeric: tabular-nums; }

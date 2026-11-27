@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}Rock Paper Scissors{% endblock %}
+{% block content %}
+<section class="panel narrow">
+  <h1>Rock Paper Scissors</h1>
+  <p>Pick a move to play against the computer.</p>
+  <form action="{{ url_for('rps.play') }}" method="post" class="lookup-form">
+    <label for="choice" class="form-label">Your move</label>
+    <select id="choice" name="choice" class="form-select" required>
+      <option value="" selected disabled>Select a move</option>
+      {% for option in options %}<option value="{{ option }}">{{ option|title }}</option>{% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary mt-3">Play</button>
+  </form>
+</section>
+{% endblock %}

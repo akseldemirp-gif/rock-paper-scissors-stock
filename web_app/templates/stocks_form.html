@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}Stocks report{% endblock %}
+{% block content %}
+<section class="panel narrow">
+  <h1>Stocks report</h1>
+  <p>Enter a stock ticker to chart its price history.</p>
+  <form action="{{ url_for('stocks.dashboard') }}" method="post" class="lookup-form">
+    <label for="symbol" class="form-label">Stock ticker</label>
+    <input id="symbol" name="symbol" class="form-control ticker-input" type="text"
+           placeholder="AAPL" autocapitalize="characters" autocomplete="off" spellcheck="false"
+           maxlength="12" aria-describedby="ticker-help" required>
+    <p id="ticker-help" class="form-text mb-0">
+      {% if historical %}Historical examples (2000–2010). Choose {{ samples|join(', ') }}.
+      {% else %}For example, AAPL or MSFT.{% endif %}
+    </p>
+    <button type="submit" class="btn btn-primary mt-3">View dashboard</button>
+  </form>
+</section>
+{% endblock %}
