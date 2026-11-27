@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Game result{% endblock %}
+{% block content %}
+<section class="panel narrow">
+  <h1>{{ result }}</h1>
+  <dl class="moves">
+    <div><dt>Your move</dt><dd>{{ player|title }}</dd></div>
+    <div><dt>Computer’s move</dt><dd>{{ computer|title }}</dd></div>
+  </dl>
+  <a class="btn btn-primary" href="{{ url_for('rps.form') }}">Play again</a>
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}{{ report.symbol }} stocks dashboard{% endblock %}
+{% block scripts %}
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+<script defer src="{{ url_for('static', filename='stocks.js') }}"></script>
+{% endblock %}
+{% block content %}
+<header class="dashboard-heading">
+  <div>
+    <h1>{{ report.symbol }} price history</h1>
+    <p class="source mb-0">{{ report.source }} · {{ report.currency or "Listing currency" }}</p>
+  </div>
+  <a class="btn btn-outline-primary" href="{{ url_for('stocks.stock_form') }}">Look up another ticker</a>
+</header>
+<section class="panel mb-3" aria-labelledby="chart-title">
+  <h2 class="h5" id="chart-title">Price chart</h2>
+  <div class="chart-box"><canvas id="price-chart" data-currency="{{ report.currency or '' }}" role="img" aria-label="{{ report.symbol }} price chart. The values are listed in the table below."></canvas></div>
+  <script id="price-data" type="application/json">{{ report.prices|tojson }}</script>
+</section>
+<section class="panel" aria-labelledby="table-title">
+  <h2 class="h5" id="table-title">Price table</h2>
+  <div class="table-responsive">
+    <table class="table table-striped align-middle mb-0">
+      <thead><tr><th scope="col">Date</th><th scope="col" class="text-end">Price ({{ report.currency or "listing currency" }})</th></tr></thead>
+      <tbody>
+        {% for price in report.prices|reverse %}
+          <tr><td>{{ price.date }}</td><td class="text-end">{% if report.currency %}${% endif %}{{ "{:,.2f}".format(price.close) }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
